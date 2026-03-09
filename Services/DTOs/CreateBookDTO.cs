@@ -34,6 +34,6 @@ public class CreateBookDTO
       public DateOnly PublishedOn { get; set; }
       
       [Required]
-      public List<BookAuthorDTO> Authors { get; set; } = new();
+      public List<AuthorDTO> Authors { get; set; } = new();
 
 }

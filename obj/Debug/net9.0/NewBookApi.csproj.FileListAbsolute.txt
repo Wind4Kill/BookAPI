@@ -156,3 +156,11 @@
 /Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/MinimalApis.Extensions.dll
 /Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/MiniValidation.dll
 /Users/artem/Code/NewBookApi/NewBookApi/obj/Debug/net9.0/swae.build.ex.cache
+/Users/artem/Code/NewBookApi/NewBookApi/obj/Debug/net9.0/NewBookApi.sourcelink.json
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/AutoMapper.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/artem/Code/NewBookApi/NewBookApi/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll

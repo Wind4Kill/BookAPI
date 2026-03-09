@@ -21,7 +21,7 @@ public static class BookExtensions
                         }
                   case SortingOptions.PublishDate:
                         {
-                              return books.OrderByDescending(b => b.PublishedOn);
+                              return books.OrderByDescending(b => b.PublishDate);
                         }
                   case SortingOptions.Price:
                         {
@@ -29,7 +29,7 @@ public static class BookExtensions
                         }
                   case SortingOptions.PageNum:
                         {
-                              return books.OrderBy(b => b.PageNum);
+                              return books.OrderBy(b => b.Pages);
                         }
                   default: throw new ArgumentException("Sorting is required.");
             }
@@ -43,7 +43,7 @@ public static class BookExtensions
                   FilterOptions.None => books,
                   FilterOptions.Rating => books.Where(b => b.Rating > filterValue),
                   FilterOptions.Price => books.Where(b => b.Price <= filterValue),
-                  FilterOptions.PageNum => books.Where(b => b.PageNum <= filterValue),
+                  FilterOptions.PageNum => books.Where(b => b.Pages <= filterValue),
                   _ => books
             };
       }

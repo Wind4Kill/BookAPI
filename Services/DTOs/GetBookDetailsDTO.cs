@@ -19,5 +19,5 @@ public class GetBookDetailsDTO
       public BookCover Coverage { get; set; }
 
       public DateOnly PublishedOn { get; set; }
-      public List<BookAuthorDTO> Authors { get; set; } = new();
+      public List<AuthorDTO> Authors { get; set; } = new();
 }
