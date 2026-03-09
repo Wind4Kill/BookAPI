@@ -1,4 +1,6 @@
 using System;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using NewBookApi.Domain;
 using NewBookApi.Domain.Entities;
@@ -10,26 +12,20 @@ namespace NewBookApi.Services;
 public class BooksControlService : IBooksControlService
 {
       ApplicationContext _dbContext = null!;
+      IMapper _mapper;
 
-      public BooksControlService(ApplicationContext context)
+      public BooksControlService(ApplicationContext context, IMapper mapper)
       {
             _dbContext = context;
+            _mapper = mapper;
 
       }
 
       public async Task<List<GetBookDTO>> GetBooks(SortFilterOptions options)
       {
-            return await _dbContext.Books.Where(b => b.Capacity > 0 == true && b.IsDeleted == false).AsNoTracking().Select(b =>
-            new GetBookDTO
-            {
-                  BookId = b.BookId,
-                  Price = b.Price,
-                  PublishedOn = b.PublishDate,
-                  Title = b.Title,
-                  PageNum = b.Pages,
-                  Rating = b.Reviews!.Average(b => (double)b.Stars)
-            })
-            .FilterQuery(options.Filtering, options.FilterValue).
+            return await _dbContext.Books.Where(b => b.Capacity > 0 == true && b.IsDeleted == false).AsNoTracking().
+            ProjectTo<GetBookDTO>(_mapper.ConfigurationProvider).
+            FilterQuery(options.Filtering, options.FilterValue).
             OrderQuery(options.Sorting).Page(page: options.PageNumber, pageSize: 10).
             ToListAsync();
       }
@@ -37,22 +33,8 @@ public class BooksControlService : IBooksControlService
       public async Task<GetBookDetailsDTO?> GetBookById(int id)
       {
             return await _dbContext.Books.Where(b => b.IsDeleted == false && b.BookId == id).
-            Select(b => new GetBookDetailsDTO
-            {
-                  BookId = b.BookId,
-                  Title = b.Title,
-                  Price = b.Price,
-                  Description = b.Description,
-                  Pages = b.Pages,
-                  PublishedOn = b.PublishDate,
-                  IsAvailable = b.Capacity > 0 ? true : false,
-                  Coverage = b.Coverage,
-                  Authors = b.Authors.Select(a => new BookAuthorDTO
-                  {
-                        AuthorId = a.AuthorId,
-                        Name = a.Name
-                  }).ToList()
-            }).AsNoTracking().FirstOrDefaultAsync();
+            ProjectTo<GetBookDetailsDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking().FirstOrDefaultAsync();
       }
 
       public async Task<int> AddBook(CreateBookDTO bookDTO)

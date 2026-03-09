@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NewBookApi.Services.DTOs;
 
-public class BookAuthorDTO : IValidatableObject
+public class AuthorDTO : IValidatableObject
 {
       [Required]
       public int AuthorId { get; set; }

@@ -1,4 +1,6 @@
 using System;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using NewBookApi.Domain;
 using NewBookApi.Services.DTOs;
@@ -9,11 +11,13 @@ namespace NewBookApi.Services;
 public class AuthorControlService : IAuthorControlService
 {
 
+      IMapper _mapper;
       ApplicationContext _dbContext;
 
-      public AuthorControlService(ApplicationContext context)
+      public AuthorControlService(ApplicationContext context, IMapper mapper)
       {
             _dbContext = context;
+            _mapper = mapper;
       }
 
       public async Task<List<GetAuthorDTO>?> GetAuthors()
@@ -27,20 +31,7 @@ public class AuthorControlService : IAuthorControlService
 
       public async Task<GetAuthorDetailsDTO?> GetAuthorById(int id)
       {
-            return await _dbContext.Authors.Where(a => a.AuthorId == id).Select(a => new GetAuthorDetailsDTO
-            {
-                  AuthorId = a.AuthorId,
-                  Books = a.Books.Select(b => new GetBookDTO
-                  {
-                        BookId = b.BookId,
-                        PageNum = b.Pages,
-                        Price = b.Pages,
-                        PublishedOn = b.PublishDate,
-                        Title = b.Title,
-                        Rating = b.Reviews!.Average(r => (double)r.Stars)
-                  }).ToList()
-
-            }).FirstOrDefaultAsync();
+            return await _dbContext.Authors.Where(a => a.AuthorId == id).ProjectTo<GetAuthorDetailsDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
       }
 
 
