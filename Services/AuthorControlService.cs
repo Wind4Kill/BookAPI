@@ -30,6 +30,7 @@ public class AuthorControlService : IAuthorControlService
             return await _dbContext.Authors.Where(a => a.AuthorId == id).Select(a => new GetAuthorDetailsDTO
             {
                   AuthorId = a.AuthorId,
+                  Name = a.Name,
                   Books = a.Books.Select(b => new GetBookDTO
                   {
                         BookId = b.BookId,
