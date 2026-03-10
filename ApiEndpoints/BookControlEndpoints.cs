@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using NewBookApi.Services;
 using NewBookApi.Services.DTOs;
+using NewBookApi.Services.ServiceInterfaces;
 
 namespace NewBookApi.ApiEndpoints;
 
@@ -11,7 +12,7 @@ public static class BookControlEndpoints
       {
             RouteGroupBuilder booksBuilder = app.MapGroup("Books").WithTags("Books");
 
-            booksBuilder.MapPost("All", async (BooksControlService service, [FromBody] SortFilterOptions? options) =>
+            booksBuilder.MapPost("All", async (IBooksControlService service, [FromBody] SortFilterOptions? options) =>
             {
                   if (options is null)
                   {
@@ -22,7 +23,7 @@ public static class BookControlEndpoints
                   return Results.Ok<List<GetBookDTO>>(books);
             }).Produces<List<CreateBookDTO>>();
 
-            booksBuilder.MapGet("{id:int}", async (int id, BooksControlService service) =>
+            booksBuilder.MapGet("{id:int}", async (int id, IBooksControlService service) =>
             {
                   GetBookDetailsDTO? requiredBook = await service.GetBookById(id);
 
@@ -33,7 +34,7 @@ public static class BookControlEndpoints
             .Produces<CreateBookDTO>()
             .ProducesProblem(statusCode: 404);
 
-            booksBuilder.MapPost("", async (CreateBookDTO book, BooksControlService service) =>
+            booksBuilder.MapPost("", async (CreateBookDTO book, IBooksControlService service) =>
             {
                   int affectedRows = await service.AddBook(book);
 
@@ -41,7 +42,7 @@ public static class BookControlEndpoints
                   Results.Created();
             }).WithParameterValidation().Produces(statusCode: 201).ProducesProblem(statusCode: 400);
 
-            booksBuilder.MapDelete("{id:int}", async (int id, BooksControlService service) =>
+            booksBuilder.MapDelete("{id:int}", async (int id, IBooksControlService service) =>
             {
                   int affectedRows = await service.RemoveBook(id);
 
@@ -49,7 +50,7 @@ public static class BookControlEndpoints
                   Results.Problem("Book couldn't be deleted.", statusCode: 400);
             }).Produces(statusCode: 204).ProducesProblem(statusCode: 400);
 
-            booksBuilder.MapPut("", async (UpdateBookDTO bookDTO, BooksControlService sevice) =>
+            booksBuilder.MapPut("", async (UpdateBookDTO bookDTO, IBooksControlService sevice) =>
             {
                   int affectedRows = await sevice.UpdateBook(bookDTO);
 

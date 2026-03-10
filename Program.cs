@@ -20,14 +20,14 @@ if (builder.Environment.IsDevelopment())
 
 string dbConnectionStr = builder.Configuration.GetConnectionString("DbConnectionString")!;
 
-builder.Services.AddDbContext<ApplicationContext>(options =>
+builder.Services.AddDbContext<ApplicationContext>(opt =>
 {
-      options.UseSqlite(dbConnectionStr);
+      opt.UseSqlite(dbConnectionStr);
 });
 
-builder.Services.AddTransient<IBooksControlService, BooksControlService>();
+builder.Services.AddTransient<IBooksControlService,BooksControlService>();
 
-builder.Services.AddTransient<IAuthorControlService, AuthorControlService>();
+builder.Services.AddTransient<IAuthorControlService,AuthorControlService>();
 
 
 var app = builder.Build();
@@ -57,4 +57,5 @@ if (app.Environment.IsProduction())
 
 app.AddBookControlEndpoints();
 app.AddAuthorControlEndpoints();
+
 app.Run();
