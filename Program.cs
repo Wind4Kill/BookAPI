@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using NewBookApi.Services.ServiceInterfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddProblemDetails();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 if (builder.Environment.IsDevelopment())
 {
