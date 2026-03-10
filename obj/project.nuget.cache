@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oK9P1InxNdU=",
+  "dgSpecHash": "gNPUPhBZ85Y=",
   "success": true,
   "projectFilePath": "/Users/artem/Code/NewBookApi/NewBookApi/NewBookApi.csproj",
   "expectedPackageFiles": [
-    "/Users/artem/.nuget/packages/automapper/16.1.0/automapper.16.1.0.nupkg.sha512",
+    "/Users/artem/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/artem/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/artem/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
@@ -16,6 +16,7 @@
     "/Users/artem/.nuget/packages/microsoft.codeanalysis.csharp.workspaces/4.8.0/microsoft.codeanalysis.csharp.workspaces.4.8.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.codeanalysis.workspaces.common/4.8.0/microsoft.codeanalysis.workspaces.common.4.8.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.codeanalysis.workspaces.msbuild/4.8.0/microsoft.codeanalysis.workspaces.msbuild.4.8.0.nupkg.sha512",
+    "/Users/artem/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.data.sqlite.core/9.0.13/microsoft.data.sqlite.core.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.entityframeworkcore/9.0.13/microsoft.entityframeworkcore.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.13/microsoft.entityframeworkcore.abstractions.9.0.13.nupkg.sha512",
@@ -29,16 +30,12 @@
     "/Users/artem/.nuget/packages/microsoft.extensions.caching.memory/9.0.13/microsoft.extensions.caching.memory.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.13/microsoft.extensions.configuration.abstractions.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.13/microsoft.extensions.dependencyinjection.9.0.13.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "/Users/artem/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.13/microsoft.extensions.dependencyinjection.abstractions.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.extensions.dependencymodel/9.0.13/microsoft.extensions.dependencymodel.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.extensions.logging/9.0.13/microsoft.extensions.logging.9.0.13.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.extensions.options/10.0.0/microsoft.extensions.options.10.0.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.extensions.primitives/10.0.0/microsoft.extensions.primitives.10.0.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
+    "/Users/artem/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.13/microsoft.extensions.logging.abstractions.9.0.13.nupkg.sha512",
+    "/Users/artem/.nuget/packages/microsoft.extensions.options/9.0.13/microsoft.extensions.options.9.0.13.nupkg.sha512",
+    "/Users/artem/.nuget/packages/microsoft.extensions.primitives/9.0.13/microsoft.extensions.primitives.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.openapi/2.4.1/microsoft.openapi.2.4.1.nupkg.sha512",
     "/Users/artem/.nuget/packages/minimalapis.extensions/0.11.0/minimalapis.extensions.0.11.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/minivalidation/0.8.0/minivalidation.0.8.0.nupkg.sha512",
@@ -59,7 +56,6 @@
     "/Users/artem/.nuget/packages/system.composition.hosting/7.0.0/system.composition.hosting.7.0.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/system.composition.runtime/7.0.0/system.composition.runtime.7.0.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/system.composition.typedparts/7.0.0/system.composition.typedparts.7.0.0.nupkg.sha512",
-    "/Users/artem/.nuget/packages/system.diagnostics.diagnosticsource/10.0.0/system.diagnostics.diagnosticsource.10.0.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/system.io.pipelines/7.0.0/system.io.pipelines.7.0.0.nupkg.sha512",
     "/Users/artem/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/artem/.nuget/packages/system.reflection.metadata/7.0.0/system.reflection.metadata.7.0.0.nupkg.sha512",
@@ -70,18 +66,5 @@
     "/Users/artem/.nuget/packages/microsoft.netcore.app.host.osx-arm64/9.0.13/microsoft.netcore.app.host.osx-arm64.9.0.13.nupkg.sha512",
     "/Users/artem/.nuget/packages/microsoft.netcore.app.ref/9.0.13/microsoft.netcore.app.ref.9.0.13.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 16.1.0 was resolved.",
-      "projectPath": "/Users/artem/Code/NewBookApi/NewBookApi/NewBookApi.csproj",
-      "warningLevel": 1,
-      "filePath": "/Users/artem/Code/NewBookApi/NewBookApi/NewBookApi.csproj",
-      "libraryId": "AutoMapper",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }
