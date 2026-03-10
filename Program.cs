@@ -59,5 +59,4 @@ if (app.Environment.IsProduction())
 
 app.AddBookControlEndpoints();
 app.AddAuthorControlEndpoints();
-app.MapGet("", () => "Welcome!");
 app.Run();
