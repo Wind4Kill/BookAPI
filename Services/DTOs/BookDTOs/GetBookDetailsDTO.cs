@@ -16,7 +16,9 @@ public class GetBookDetailsDTO
 
       public int Pages { get; set; }
 
-      public bool IsAvailable { get; set; }
+      public int Capacity { get; set; }
+
+      public bool IsAvailable  => Capacity > 0;
 
       public BookCover Coverage { get; set; }
 

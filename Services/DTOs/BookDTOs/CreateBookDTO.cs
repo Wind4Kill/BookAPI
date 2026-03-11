@@ -27,7 +27,7 @@ public class CreateBookDTO
       public int BookCapacity { get; set; }
 
       [Required]
-      public BookCover Coverage { get; set; }
+      public string Coverage { get; set; } = null!;
 
       [Required]
       [DataType(DataType.Date)]

@@ -21,7 +21,7 @@ public class UpdateBookDTO
       public int? Pages { get; set; }
       public int? BookCapacity { get; set; }
 
-      public BookCover? Coverage { get; set; }
+      public string Coverage { get; set; } = null!;
 
       [Required]
       public List<string>? Authors { get; set; } = new();

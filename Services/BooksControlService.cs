@@ -20,7 +20,7 @@ public class BooksControlService : IBooksControlService
             _mapper = mapper;
 
       }
-
+# region GetBooks
       public async Task<List<GetBookDTO>> GetBooks(SortFilterOptions options)
       {
             return await _dbContext.Books.Where(b => b.Capacity > 0 == true && b.IsDeleted == false).AsNoTracking().
@@ -37,10 +37,11 @@ public class BooksControlService : IBooksControlService
             .AsNoTracking().FirstOrDefaultAsync();
       }
 
+#endregion
       public async Task<int> AddBook(CreateBookDTO bookDTO)
       {
             List<Author> authors = await DifferentiateEntity<Author>(bookDTO.Authors);
-            List<Tag> tags = await DifferentiateEntity<Tag>(bookDTO.Tags); 
+            List<Tag> tags = await DifferentiateEntity<Tag>(bookDTO.Tags);
 
             Book newBook = new()
             {
@@ -48,7 +49,7 @@ public class BooksControlService : IBooksControlService
                   Capacity = bookDTO.BookCapacity,
                   Description = bookDTO.Description,
                   Pages = bookDTO.Pages,
-                  Coverage = bookDTO.Coverage,
+                  Coverage = (BookCover)Enum.Parse(typeof(BookCover), bookDTO.Coverage),
                   PublishDate = bookDTO.PublishDate,
                   Price = bookDTO.Price,
                   Authors = authors,
@@ -114,9 +115,9 @@ public class BooksControlService : IBooksControlService
             }
 
 
-            if (bookDto.Coverage is not null && (BookCover)bookDto.Coverage.Value != requiredBook.Coverage)
+            if (bookDto.Coverage is not null && (BookCover)Enum.Parse(typeof(BookCover),bookDto.Coverage) != requiredBook.Coverage)
             {
-                  requiredBook.Coverage = bookDto.Coverage.Value;
+                  requiredBook.Coverage = (BookCover)Enum.Parse(typeof(BookCover),bookDto.Coverage);
             }
 
 
