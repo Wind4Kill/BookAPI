@@ -35,15 +35,16 @@ public static class BookExtensions
             }
       }
 
-      public static IQueryable<GetBookDTO> FilterQuery(this IQueryable<GetBookDTO> books, FilterOptions options, int filterValue)
+      public static IQueryable<GetBookDTO> FilterQuery(this IQueryable<GetBookDTO> books, FilterOptions options, string filterValue)
       {
             return options switch
 
             {
                   FilterOptions.None => books,
-                  FilterOptions.Rating => books.Where(b => b.Rating > filterValue),
-                  FilterOptions.Price => books.Where(b => b.Price <= filterValue),
-                  FilterOptions.PageNum => books.Where(b => b.Pages <= filterValue),
+                  FilterOptions.Category => books.Where(b =>(b.BookTags.Any(t=>t.Tag.Name==filterValue))),
+                  FilterOptions.Rating => books.Where(b => b.Rating > int.Parse(filterValue)),
+                  FilterOptions.Price => books.Where(b => b.Price <= int.Parse(filterValue)),
+                  FilterOptions.PageNum => books.Where(b => b.Pages <= int.Parse(filterValue)),
                   _ => books
             };
       }

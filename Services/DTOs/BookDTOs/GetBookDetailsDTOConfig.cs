@@ -10,6 +10,9 @@ public class GetBookDetailsDTOConfig : Profile
       {
             CreateMap<Book, GetBookDetailsDTO>().
             ForMember(b => b.IsAvailable,
-            m => m.MapFrom(b => b.Capacity > 0 ? true : false));
+            m => m.MapFrom(b => b.Capacity > 0))
+            .ForMember(b => b.BookTags,
+            m => m.MapFrom(b => b.BookTags));
+            
       }
 }

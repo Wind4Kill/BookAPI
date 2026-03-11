@@ -39,14 +39,8 @@ public class BooksControlService : IBooksControlService
 
       public async Task<int> AddBook(CreateBookDTO bookDTO)
       {
-            List<string> dtoAuthorNames = bookDTO.Authors.Select(a => a.Name).ToList();
-
-            List<Author> existingAuthors = await _dbContext.Authors.Where(a => dtoAuthorNames.Contains(a.Name)).ToListAsync();
-
-            List<Author> newAuthors = bookDTO.Authors.
-            Where(a => !existingAuthors.Any(e => e.Name == a.Name)).
-            Select(a => new Author { Name = a.Name }).
-            ToList();
+            List<Author> authors = await DifferentiateEntity<Author>(bookDTO.Authors);
+            List<Tag> tags = await DifferentiateEntity<Tag>(bookDTO.Tags); 
 
             Book newBook = new()
             {
@@ -55,10 +49,20 @@ public class BooksControlService : IBooksControlService
                   Description = bookDTO.Description,
                   Pages = bookDTO.Pages,
                   Coverage = bookDTO.Coverage,
-                  PublishDate = bookDTO.PublishedOn,
+                  PublishDate = bookDTO.PublishDate,
                   Price = bookDTO.Price,
-                  Authors = existingAuthors.Concat(newAuthors).ToList()
+                  Authors = authors,
+                  BookTags = new List<BookTag>()
             };
+
+            foreach (Tag tag in tags)
+            {
+                  newBook.BookTags.Add(new BookTag()
+                  {
+                        Book = newBook,
+                        Tag = tag
+                  });
+            }
 
             _dbContext.Books.Add(newBook);
             return await _dbContext.SaveChangesAsync();
@@ -118,23 +122,43 @@ public class BooksControlService : IBooksControlService
 
             if (bookDto.Authors is not null && bookDto.Authors.Count > 0)
             {
-                  List<string> dtoAuthorNames = bookDto.Authors.Select(a => a.Name).ToList();
+                  List<Author> authors = await DifferentiateEntity<Author>(bookDto.Authors);
 
-                  List<Author> existingAuthors = await _dbContext.Authors.
-                  Where(a => dtoAuthorNames.
-                  Contains(a.Name)).ToListAsync();
+                  requiredBook.Authors = authors;
 
-                  List<Author> newAuthors = bookDto.Authors.
-                  Where(a => !existingAuthors.
-                  Any(e => e.Name == a.Name)).
-                  Select(a => new Author { Name = a.Name }).ToList();
+            }
 
-                  requiredBook.Authors = existingAuthors.Concat(newAuthors).ToList();
+            if (bookDto.Tags is not null && bookDto.Tags.Count > 0)
+            {
+                  List<Tag> tags = await DifferentiateEntity<Tag>(bookDto.Tags);
+                  
+                  requiredBook.BookTags = new List<BookTag>();
+
+                  foreach (Tag tag in tags)
+                  {
+                        requiredBook.BookTags.Add(new BookTag()
+                        {
+                              Book = requiredBook,
+                              Tag = tag
+                        });
+                  }
 
             }
 
             return await _dbContext.SaveChangesAsync();
 
+      }
+
+      private async Task<List<T>> DifferentiateEntity<T>(IEnumerable<string> dtoValues) 
+      where T : class, IDifferentiateEntity, new()
+      {
+            List<T> existingValues = await _dbContext.Set<T>().Where(t => dtoValues.
+            Contains(t.Name)).ToListAsync();
+
+            List<T> newValues = dtoValues.Where(t => !existingValues.Any(e => e.Name == t)).
+            Select(t => new T { Name = t }).ToList();
+
+            return existingValues.Concat(newValues).ToList();
       }
 }
 

@@ -5,5 +5,6 @@ public enum FilterOptions
       None,
       Price,
       Rating,
-      PageNum
+      PageNum,
+      Category
 }

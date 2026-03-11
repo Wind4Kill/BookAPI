@@ -16,4 +16,5 @@ public class GetBookDTO
       bool IsAvailable { get; set; }
       public DateOnly PublishDate { get; set; }
       public double? Rating { get; set; }
+      public ICollection<BookTag> BookTags { get; set; } = null!;
 }

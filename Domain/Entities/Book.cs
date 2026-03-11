@@ -26,5 +26,7 @@ public class Book
 
       public List<Review>? Reviews { get; set; } = new();
 
+      public ICollection<BookTag> BookTags { get; set; } = null!;
+
 
 }

@@ -12,7 +12,7 @@ public class CreateBookDTO
       public string Title { get; set; } = null!;
 
       [Required]
-      [Range(0,5000)]
+      [Range(0, 5000)]
       public decimal Price { get; set; }
 
       [Required]
@@ -31,9 +31,12 @@ public class CreateBookDTO
 
       [Required]
       [DataType(DataType.Date)]
-      public DateOnly PublishedOn { get; set; }
-      
+      public DateOnly PublishDate { get; set; }
+
       [Required]
-      public List<AuthorDTO> Authors { get; set; } = new();
+      public ICollection<string> Tags { get; set; } = null!;
+
+      [Required]
+      public List<string> Authors { get; set; } = new();
 
 }

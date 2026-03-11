@@ -14,6 +14,8 @@ public class ApplicationContext : DbContext
 
       public DbSet<Review> Reviews { get; set; }
 
+      public DbSet<Tag> Tags { get; set; }
+
 
       public ApplicationContext(DbContextOptions options) : base(options) { }
 
@@ -21,6 +23,7 @@ public class ApplicationContext : DbContext
       {
             modelBuilder.ApplyConfiguration<Review>(new BookReviewConfiguration());
             modelBuilder.ApplyConfiguration<Book>(new BookEntityConfiguration());
+            modelBuilder.Entity<BookTag>().HasKey(bt => new { bt.BookId, bt.TagId });
       }
 
 }

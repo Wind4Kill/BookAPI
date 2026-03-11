@@ -8,7 +8,7 @@ public class SortFilterOptions
 
       public SortingOptions Sorting { get; set; }
 
-      public int FilterValue { get; set; }
+      public string FilterValue { get; set; }
 
       public int PageNumber { get; set; }
 
@@ -18,7 +18,7 @@ public class SortFilterOptions
       {
             Sorting = SortingOptions.Id;
             Filtering = FilterOptions.None;
-            FilterValue = 0;
+            FilterValue = string.Empty;
             PageNumber = 1;
       }
 }

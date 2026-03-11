@@ -1,9 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using NewBookApi.Domain.Entities;
 
 namespace NewBookApi.Services.DTOs;
 
+[AutoMap(typeof(Book))]
 public class GetBookDetailsDTO
 {
       public int BookId { get; set; }
@@ -18,6 +20,8 @@ public class GetBookDetailsDTO
 
       public BookCover Coverage { get; set; }
 
-      public DateOnly PublishedOn { get; set; }
+      public DateOnly PublishDate { get; set; }
       public List<AuthorDTO> Authors { get; set; } = new();
+
+      public ICollection<string> BookTags { get; set; } = null!;
 }

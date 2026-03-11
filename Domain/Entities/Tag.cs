@@ -3,11 +3,11 @@ using NewBookApi.Services.ServiceInterfaces;
 
 namespace NewBookApi.Domain.Entities;
 
-public class Author:IDifferentiateEntity
+public class Tag:IDifferentiateEntity
 {
+      public int TagId { get; set; }
 
-      public int AuthorId { get; set; }
       public string Name { get; set; } = null!;
 
-      public List<Book> Books { get; set; } = new();
+      public ICollection<BookTag> BookTags { get; set; } = null!;
 }
