@@ -10,5 +10,6 @@ public class BookEntityConfiguration : IEntityTypeConfiguration<Book>
       public void Configure(EntityTypeBuilder<Book> builder)
       {
             builder.HasMany(b => b.Authors).WithMany(a => a.Books);
+            builder.Property(b => b.Coverage).HasConversion<string>();
       }
 }
